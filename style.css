@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Poppins", sans-serif;
+}
+input {
+  background-color: rgba(128, 128, 128, 0.377);
+  padding-left: 12px;
+}
+h3 {
+  text-align: center;
+}
+.calculate{
+    margin-left: 35%;
+    
+}
+
