@@ -8,5 +8,9 @@
 
 - HTML5
 - Vanilla CSS3
-- Bootstrap
+- Bootstrap5
 - JS (DOM)
+
+</br>
+
+<img class="img-fluid rounded shadow-lg " src="money (2).jpg" alt="">
