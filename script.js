@@ -2,7 +2,6 @@ function getInputValue(inputId) {
   let inputField = document.getElementById(inputId);
   let amountText = inputField.value;
   let amountValue = parseFloat(amountText);
-  // inputField.value = "";
   return amountValue;
 }
 
@@ -15,11 +14,22 @@ function getExpenesesAmount() {
   const getFoodCost = getInputValue("food");
   const getRentCost = getInputValue("rent");
   const getCloth = getInputValue("cloth");
+
   const newTotalExpeneses = getFoodCost + getRentCost + getCloth;
 
-  const expenseiveDefine = document.getElementById("totalExpeneses");
-  expenseiveDefine.innerText = newTotalExpeneses;
-  return newTotalExpeneses;
+  const getIncome = getIncomeAmount();
+  if (newTotalExpeneses > getIncome) {
+    // Create element:
+    const para = document.createElement("p");
+    para.innerHTML = "Your Expenes Amount is greater than Your Income!";
+
+    // Append to another element:
+    document.getElementById("myDIV1").appendChild(para);
+  } else {
+    const expenseiveDefine = document.getElementById("totalExpeneses");
+    expenseiveDefine.innerText = newTotalExpeneses;
+    return newTotalExpeneses;
+  }
 }
 
 function getBalance() {
@@ -29,19 +39,33 @@ function getBalance() {
   const balnce = getIncome - newTotalExpeneses;
 
   const balaceDefine = document.getElementById("balanceAmount");
-  balaceDefine.innerText = balnce;
+  if (isNaN(balnce)) {
+    balaceDefine.innerText = 00;
+  } else {
+    balaceDefine.innerText = balnce;
+  }
+
   return balnce;
 }
 
 function getSaveAmount() {
   const jIncome = getIncomeAmount();
+  const balanceG = getBalance();
   const getSaving = getInputValue("savingInput");
   const saveAmount = (jIncome * getSaving) / 100;
 
-  const savingsDefine = document.getElementById("savingMoney");
-  savingsDefine.innerText = saveAmount;
+  if (saveAmount > balanceG) {
+    // Create element:
+    const para = document.createElement("p");
+    para.innerHTML = "Your Savings Amount is greater than Your Balace!";
 
-  return saveAmount;
+    // Append to another element:
+    document.getElementById("myDIV2").appendChild(para);
+  } else {
+    const savingsDefine = document.getElementById("savingMoney");
+    savingsDefine.innerText = saveAmount;
+    return saveAmount;
+  }
 }
 
 function getRemainingBalance() {
@@ -51,28 +75,22 @@ function getRemainingBalance() {
   const remainingBalace = savedAmount - toatalBalace;
 
   const remainMoneyDefine = document.getElementById("remainMoney");
-  remainMoneyDefine.innerText = remainingBalace;
+
+  if (isNaN(remainingBalace)) {
+    remainMoneyDefine.innerText = 00;
+  } else {
+    remainMoneyDefine.innerText = remainingBalace;
+  }
 
   return remainingBalace;
 }
 
-// const newTotalExpenesesText = getExpenesesAmount();
-// const newBalanceText = getBalance();
-// const newSaveAmountText = getSaveAmount();
-// const remainingBalaceText = getRemainingBalance();
-
-// const totalExpenseiveDefine = expenseiveDefine.innerText;
-// const totalBalaceDefine = balaceDefine.innerText;
-// const totalSavingsDefine = savingsDefine.innerText;
-// const totalRemainMoneyDefine = remainMoneyDefine.innerText;
-
-
 document.getElementById("calculate").addEventListener("click", function () {
-  const expense = getExpenesesAmount();
-  const balanceG = getBalance();
+  getExpenesesAmount();
+  getBalance();
 });
 
 document.getElementById("save").addEventListener("click", function () {
-  const lastSavingAmount = getSaveAmount();
-  const lastRemainingBalace = getRemainingBalance();
+  getSaveAmount();
+  getRemainingBalance();
 });
