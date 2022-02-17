@@ -13,4 +13,4 @@
 
 </br>
 
-<img class="img-fluid rounded shadow-lg " src="money (2).jpg" alt="">
+<img class="img-fluid rounded shadow-lg " src="img/bk-money.png" alt="">
