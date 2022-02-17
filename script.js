@@ -2,6 +2,7 @@ function getInputValue(inputId) {
   let inputField = document.getElementById(inputId);
   let amountText = inputField.value;
   let amountValue = parseFloat(amountText);
+  // inputField.value = '';
   return amountValue;
 }
 
@@ -14,22 +15,31 @@ function getExpenesesAmount() {
   const getFoodCost = getInputValue("food");
   const getRentCost = getInputValue("rent");
   const getCloth = getInputValue("cloth");
+  // if (getFoodCost != Number || getRentCost != Number || getCloth != Number) {
+  //   alert("Check your Balance ! Here Not Number amount");
+  // } else {
+  //   if (getFoodCost < 0 || getRentCost < 0 || getCloth < 0) {
+  //     alert("Check your Balance ! Here Have Negative amount");
+  //   } else {
+      
+  //   }
+  // }
 
   const newTotalExpeneses = getFoodCost + getRentCost + getCloth;
 
-  const getIncome = getIncomeAmount();
-  if (newTotalExpeneses > getIncome) {
-    // Create element:
-    const para = document.createElement("p");
-    para.innerHTML = "Your Expenes Amount is greater than Your Income!";
+      const getIncome = getIncomeAmount();
+      if (newTotalExpeneses > getIncome) {
+        // Create element:
+        const para = document.createElement("p");
+        para.innerHTML = "Your Expenes Amount is greater than Your Income!";
 
-    // Append to another element:
-    document.getElementById("myDIV1").appendChild(para);
-  } else {
-    const expenseiveDefine = document.getElementById("totalExpeneses");
-    expenseiveDefine.innerText = newTotalExpeneses;
-    return newTotalExpeneses;
-  }
+        // Append to another element:
+        document.getElementById("myDIV1").appendChild(para);
+      } else {
+        const expenseiveDefine = document.getElementById("totalExpeneses");
+        expenseiveDefine.innerText = newTotalExpeneses;
+        return newTotalExpeneses;
+      }
 }
 
 function getBalance() {
